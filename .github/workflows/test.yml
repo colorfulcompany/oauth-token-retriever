@@ -1,0 +1,26 @@
+name: test
+
+on:
+  push:
+    branches:
+      - master
+      - '/releases/*'
+      - '/pull-req/*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: install yarn
+        run: npm install -g yarn
+      - name: install npms /w yarn
+        run: yarn install
+      - name: lint
+        run: yarn run lint
+      - name: test
+        run: yarn run test

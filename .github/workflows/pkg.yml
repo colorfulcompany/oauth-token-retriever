@@ -1,0 +1,62 @@
+name: pkg
+
+on:
+  create:
+    tags:
+      - v*.*.*
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: setup yarn
+      run: npm install -g yarn
+    - name: install npms w/ yarn
+      run: yarn install
+    - name: set pkg platform
+      id: pkg-platform
+      uses: ./.github/actions/pkg-platform
+      with:
+        os: ${{ matrix.os }}
+    - name: echo steps
+      env:
+        STEPS: ${{ toJSON(steps) }}
+      run: echo "$STEPS"
+    - name: package executable
+      env:
+        PKG_PLATFORM: ${{ steps.pkg-platform.outputs.name }}
+      run: |
+        yarn run pkg -t "node12-$PKG_PLATFORM" -o "pkg/oauth-token-retriever-$PKG_PLATFORM" src/index.js
+      if: matrix.os != 'windows-latest'
+    - name: package executable
+      env:
+        PKG_PLATFORM: ${{ steps.pkg-platform.outputs.name }}
+      run: |
+        yarn run pkg -t "node12-%PKG_PLATFORM%" -o "pkg/oauth-token-retriever-%PKG_PLATFORM%" src/index.js
+      if: matrix.os == 'windows-latest'
+    - name: upload artifacts
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PKG_PLATFORM: ${{ steps.pkg-platform.outputs.name }}
+      uses: actions/upload-artifact@v1
+      with:
+        name: oauth-token-retriever
+        path: pkg
+    - name: upload release files
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PKG_PLATFORM: ${{ steps.pkg-platform.outputs.name }}
+      uses: softprops/action-gh-release@v1
+      with:
+        files: pkg/*

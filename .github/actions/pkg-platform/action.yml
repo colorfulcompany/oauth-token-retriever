@@ -1,0 +1,13 @@
+name: pkg-plaform
+description: give matrix.os and set enviroment PKG_PLATFORM
+author: me
+runs:
+  using: node12
+  main: app.js
+inputs:
+  os:
+    description: 'give matrix.os'
+    required: true
+outputs:
+  name:
+    description: 'converted platform name for pkg'
