@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-      - '/releases/*'
-      - '/pull-req/*'
+      - 'releases/*'
+      - 'pull-req/*'
 
 jobs:
   test:

@@ -1,7 +1,7 @@
 name: pkg
 
 on:
-  create:
+  push:
     tags:
       - v*.*.*
 

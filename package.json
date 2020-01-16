@@ -14,10 +14,11 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "jest": "^24.9.0",
+    "intelli-espower-loader": "^1.0.1",
     "ky": "^0.15.0",
     "ky-universal": "^0.3.0",
     "lodash": "^4.17.15",
+    "mocha": "^7.0.0",
     "pkg": "^4.4.0",
     "power-assert": "^1.6.1",
     "sinon": "^7.5.0"
@@ -29,8 +30,8 @@
     "yargs": "^14.2.0"
   },
   "scripts": {
-    "test": "jest",
-    "lint": "eslint src __tests__"
+    "test": "NODE_PATH=./src mocha -r intelli-espower-loader test/**/*.spec.js",
+    "lint": "eslint ."
   },
   "pkg": {
     "scripts": "src/**/*.js"
