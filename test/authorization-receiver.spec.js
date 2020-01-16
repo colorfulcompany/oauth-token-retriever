@@ -65,7 +65,9 @@ describe('AuthorizationReceiver', () => {
   })
 
   describe.skip('fetch indeed authorization code', () => {
-    beforeEach(() => { // eslint-disable-line
+    beforeEach(function () { // eslint-disable-line
+      this.timeout(10000)
+
       config = new Config({
         authorizeUrl: AUTHORIZE_URL,
         tokenUrl: TOKEN_URL,
@@ -73,8 +75,6 @@ describe('AuthorizationReceiver', () => {
         secret: ''
       })
       authReceiver = new AuthorizationReceiver(config)
-
-      jest.setTimeout(10000) // eslint-disable-line
     })
 
     it('got authorization code and tokens', async () => {
@@ -109,7 +109,7 @@ describe('AuthorizationReceiver', () => {
 
         setTimeout(() => {
           authReceiver.catcher.emitter.emit('codeCaught', 'abc')
-        }, 0)
+        }, 10)
       })
 
       afterEach(async () => { // eslint-disable-line
@@ -139,7 +139,7 @@ describe('AuthorizationReceiver', () => {
 
         setTimeout(() => {
           authReceiver.catcher.emitter.emit('codeCaught', 'abc')
-        }, 0)
+        }, 10)
       })
 
       afterEach(async () => { // eslint-disable-line
