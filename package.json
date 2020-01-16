@@ -2,6 +2,10 @@
   "engines": {
     "node": "~12"
   },
+  "name": "oauth-token-retriever",
+  "description": "A simple command for downloading OAuth Tokens",
+  "version": "0.1.0",
+  "license": "BSD-2-Clause",
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-config-standard": "^14.1.0",
