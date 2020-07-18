@@ -17,7 +17,7 @@
     "intelli-espower-loader": "^1.0.1",
     "ky": "^0.15.0",
     "ky-universal": "^0.3.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mocha": "^7.0.0",
     "pkg": "^4.4.0",
     "power-assert": "^1.6.1",
