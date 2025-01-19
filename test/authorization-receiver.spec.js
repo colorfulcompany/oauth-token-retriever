@@ -1,4 +1,4 @@
-/* global describe, it */
+const { describe, it, beforeEach, afterEach } = require('mocha')
 
 const Config = require('config')
 const AuthorizationReceiver = require('authorization-receiver')

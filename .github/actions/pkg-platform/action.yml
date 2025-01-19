@@ -2,7 +2,7 @@ name: pkg-plaform
 description: give matrix.os and set enviroment PKG_PLATFORM
 author: me
 runs:
-  using: node12
+  using: node18
   main: app.js
 inputs:
   os:
