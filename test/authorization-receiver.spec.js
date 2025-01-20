@@ -1,10 +1,10 @@
-const { describe, it, beforeEach, afterEach } = require('mocha')
+import { describe, it, beforeEach, afterEach } from 'mocha'
 
-const Config = require('config')
-const AuthorizationReceiver = require('authorization-receiver')
+import Config from '../src/config.js'
+import AuthorizationReceiver from '../src/authorization-receiver.js'
 
-const assert = require('power-assert')
-const sinon = require('sinon')
+import assert from 'power-assert'
+import sinon from 'sinon'
 
 describe('AuthorizationReceiver', () => {
   const AUTHORIZE_URL = 'http://localhost/auth'

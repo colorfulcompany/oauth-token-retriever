@@ -1,9 +1,8 @@
-const { describe, it, beforeEach } = require('mocha')
+import { describe, it, beforeEach } from 'mocha'
+import assert from 'power-assert'
+import _ from 'lodash'
 
-const assert = require('power-assert')
-const _ = require('lodash')
-
-const Cliopts = require('cliopts')
+import Cliopts from '../src/cliopts.js'
 
 describe('Cliopts', () => {
   var opts

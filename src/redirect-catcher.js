@@ -1,7 +1,7 @@
-const EventEmitter = require('events')
-const express = require('express')
+import EventEmitter from 'events'
+import express from 'express'
 
-class RedirectCatcher {
+export default class RedirectCatcher {
   /**
    * @param {number} port
    */
@@ -76,5 +76,3 @@ class RedirectCatcher {
     }
   }
 }
-
-module.exports = RedirectCatcher

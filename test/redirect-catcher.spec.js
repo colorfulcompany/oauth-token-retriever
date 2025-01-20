@@ -1,9 +1,9 @@
-const { describe, it, beforeEach, afterEach } = require('mocha')
+import { describe, it, beforeEach, afterEach } from 'mocha'
 
-const RedirectCatcher = require('redirect-catcher')
+import RedirectCatcher from '../src/redirect-catcher.js'
 
-const ky = require('@toss/ky').default
-const assert = require('power-assert')
+import ky from 'ky'
+import assert from 'power-assert'
 
 describe('RedirectCatcher', () => {
   describe('#authorizationCode', () => {

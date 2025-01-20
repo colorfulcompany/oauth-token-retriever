@@ -1,8 +1,7 @@
-const { describe, it, beforeEach } = require('mocha')
+import { describe, it, beforeEach } from 'mocha'
 
-const Config = require('config')
-
-const assert = require('power-assert')
+import Config from '../src/config.js'
+import assert from 'power-assert'
 
 describe('Config', () => {
   var config

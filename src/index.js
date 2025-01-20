@@ -1,6 +1,6 @@
-const Cliopts = require('./cliopts')
-const Config = require('./config')
-const AuthorizationReceiver = require('./authorization-receiver')
+import Cliopts from './cliopts.js'
+import Config from './config.js'
+import AuthorizationReceiver from './authorization-receiver.js'
 
 /**
  * main

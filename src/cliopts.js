@@ -1,6 +1,6 @@
-const yargs = require('yargs')
+import yargs from 'yargs/yargs'
 
-class Cliopts {
+export default class Cliopts {
   constructor () {
     this.error = undefined
     this.argv = undefined
@@ -30,7 +30,7 @@ class Cliopts {
    * @return {object}
    */
   config () {
-    return yargs
+    return yargs()
       .option('g', {
         alias: 'grant-type',
         default: 'authorization_code',
@@ -79,5 +79,3 @@ class Cliopts {
     this.config().showHelp()
   }
 }
-
-module.exports = Cliopts
