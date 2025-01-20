@@ -125,7 +125,10 @@ class AuthorizationReceiver {
    * @return {object}
    */
   mergeRefreshTokenAndResult (refresh_token, result) { // eslint-disable-line
-    return { ...result, refresh_token }
+    return {
+      ...result,
+      refresh_token // eslint-disable-line camelcase
+    }
   }
 }
 

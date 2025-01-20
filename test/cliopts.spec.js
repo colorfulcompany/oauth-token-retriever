@@ -1,4 +1,4 @@
-/* global describe, it */
+const { describe, it, beforeEach } = require('mocha')
 
 const assert = require('power-assert')
 const _ = require('lodash')

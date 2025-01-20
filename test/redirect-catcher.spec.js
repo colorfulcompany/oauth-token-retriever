@@ -1,8 +1,8 @@
-/* global describe, it */
+const { describe, it, beforeEach, afterEach } = require('mocha')
 
 const RedirectCatcher = require('redirect-catcher')
 
-const ky = require('ky-universal')
+const ky = require('@toss/ky').default
 const assert = require('power-assert')
 
 describe('RedirectCatcher', () => {

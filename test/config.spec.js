@@ -1,4 +1,4 @@
-/* global describe, it */
+const { describe, it, beforeEach } = require('mocha')
 
 const Config = require('config')
 

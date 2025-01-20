@@ -1,33 +1,31 @@
 {
   "engines": {
-    "node": "~12"
+    "node": "~18"
   },
   "name": "oauth-token-retriever",
   "description": "A simple command for downloading OAuth Tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "eslint": "^6.5.1",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsdoc": "^15.9.10",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "intelli-espower-loader": "^1.0.1",
-    "ky": "^0.15.0",
-    "ky-universal": "^0.3.0",
-    "lodash": "^4.17.15",
-    "mocha": "^7.0.0",
-    "pkg": "^4.4.0",
+    "@toss/ky": "^1.2.1",
+    "eslint": "<9",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsdoc": "^50.6.2",
+    "eslint-plugin-n": "^17.15.1",
+    "eslint-plugin-promise": "^7.2.1",
+    "intelli-espower-loader": "^1.1.0",
+    "lodash": "^4.17.21",
+    "mocha": "^11.0.1",
+    "pkg": "^5.8.1",
     "power-assert": "^1.6.1",
-    "sinon": "^7.5.0"
+    "sinon": "^19.0.2"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "oauth": "^0.9.15",
-    "open": "^6.4.0",
-    "yargs": "^14.2.0"
+    "express": "^4.21.2",
+    "oauth": "^0.10.0",
+    "open": "<9",
+    "yargs": "^17.7.2"
   },
   "scripts": {
     "test": "NODE_PATH=./src mocha -r intelli-espower-loader test/**/*.spec.js",
