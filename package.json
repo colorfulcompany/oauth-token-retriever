@@ -8,6 +8,7 @@
   "version": "0.2.0",
   "license": "BSD-2-Clause",
   "devDependencies": {
+    "@types/node": "^22.10.7",
     "eslint": "<9",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.31.0",
@@ -18,7 +19,6 @@
     "ky": "^1.7.4",
     "lodash": "^4.17.21",
     "mocha": "^11.0.1",
-    "pkg": "^5.8.1",
     "power-assert": "^1.6.1",
     "sinon": "^19.0.2"
   },
@@ -29,10 +29,7 @@
     "yargs": "^17.7.2"
   },
   "scripts": {
-    "test": "NODE_PATH=./src mocha -r intelli-espower-loader test/**/*.spec.js",
+    "test": "NODE_PATH=./src mocha test/**/*.spec.js",
     "lint": "eslint ."
-  },
-  "pkg": {
-    "scripts": "src/**/*.js"
   }
 }
