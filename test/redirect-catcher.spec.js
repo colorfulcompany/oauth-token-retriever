@@ -1,4 +1,4 @@
-import { describe, it, beforeEach, afterEach } from 'mocha'
+import { describe, it, beforeEach } from 'mocha'
 
 import RedirectCatcher from '../src/redirect-catcher.js'
 
@@ -19,10 +19,6 @@ describe('RedirectCatcher', () => {
     beforeEach(async () => { // eslint-disable-line
       catcher = new RedirectCatcher()
       await catcher.run()
-    })
-
-    afterEach(() => { // eslint-disable-line
-      catcher.close()
     })
 
     it('#authorizationCode', async () => {

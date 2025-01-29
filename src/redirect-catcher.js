@@ -44,22 +44,30 @@ export default class RedirectCatcher {
   }
 
   /**
-   * @return {object} http.Server
+   * @return {Promise<object>} http.Server
    */
-  async run () {
-    const port = this.port()
+  run () {
+    return new Promise((resolve, reject) => {
+      if (this.isRunning()) {
+        reject(new Error('already running'))
+      } else {
+        const port = this.port()
 
-    this.app.get('/', async (req, res, _next) => {
-      this.code = req.query.code.repeat(1)
-      res.status(200).send('')
-      await this.close()
-      this.emitter.emit('codeCaught', this.code)
+        this.app.get('/', async (req, res, _next) => {
+          this.code = req.query.code.repeat(1)
+          res.status(200).send('')
+          await this.close()
+          this.emitter.emit('codeCaught', this.code)
+        })
+
+        console.log(`start server on http://localhost:${port}`)
+
+        this.server = this.app.listen(port)
+        this.server.on('listening', () => {
+          resolve(this.server)
+        })
+      }
     })
-
-    console.log(`start server on http://localhost:${port}`)
-    this.server = this.app.listen(port)
-
-    return await this.server
   }
 
   /**
@@ -69,10 +77,20 @@ export default class RedirectCatcher {
     return typeof this.server !== 'undefined'
   }
 
-  async close () {
-    if (this.isRunning()) {
-      await this.server.close()
-      this.server = undefined
-    }
+  /**
+   * @return {Promise<true>}
+   */
+  close () {
+    return new Promise((resolve, reject) => {
+      if (this.isRunning()) {
+        this.server.on('close', () => {
+          this.server = undefined
+          resolve(true)
+        })
+        this.server.close()
+      } else {
+        reject(new Error('no running server'))
+      }
+    })
   }
 }

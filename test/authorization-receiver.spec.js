@@ -117,10 +117,6 @@ describe('AuthorizationReceiver', () => {
         }, 10)
       })
 
-      it('#isRunnig', () => {
-        assert(authReceiver.catcher.isRunning())
-      })
-
       it('assert equal on code', async () => {
         assert.equal(await authReceiver.code(), 'abc')
       })

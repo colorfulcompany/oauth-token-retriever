@@ -45,8 +45,11 @@ export default class AuthorizationReceiver {
   }
 
   async invokeCatcher () {
-    this.catcher = new RedirectCatcher(this.config.catcher.port)
-    await this.catcher.run()
+    const catcher = new RedirectCatcher(this.config.catcher.port)
+    await catcher.run()
+    this.catcher = catcher
+
+    return this.catcher
   }
 
   /**
