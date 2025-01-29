@@ -10,7 +10,7 @@ describe('AuthorizationReceiver', () => {
   const AUTHORIZE_URL = 'http://localhost/auth'
   const TOKEN_URL = 'http://localhost/token'
 
-  var authReceiver, config
+  let authReceiver, config
 
   function authorizeParams () { // eslint-disable-line
     return {
@@ -86,9 +86,9 @@ describe('AuthorizationReceiver', () => {
   })
 
   describe('with mock', () => {
-    var mockReceiver
+    let mockReceiver
 
-    beforeEach(async () => { // eslint-disable-line
+    beforeEach(() => {
       config = new Config({
         authorizeUrl: AUTHORIZE_URL,
         tokenUrl: TOKEN_URL,
@@ -101,6 +101,11 @@ describe('AuthorizationReceiver', () => {
       mockReceiver.expects('openBrowser').once()
     })
 
+    afterEach(async () => { // eslint-disable-line
+      await authReceiver.catcher.close()
+      mockReceiver.restore()
+    })
+
     describe('#code', () => {
       beforeEach(async () => { // eslint-disable-line
         mockReceiver.expects('authorizeParams').once().callsFake(authorizeParams)
@@ -110,11 +115,6 @@ describe('AuthorizationReceiver', () => {
         setTimeout(() => {
           authReceiver.catcher.emitter.emit('codeCaught', 'abc')
         }, 10)
-      })
-
-      afterEach(async () => { // eslint-disable-line
-        await authReceiver.catcher.close()
-        mockReceiver.restore()
       })
 
       it('#isRunnig', () => {
@@ -140,11 +140,6 @@ describe('AuthorizationReceiver', () => {
         setTimeout(() => {
           authReceiver.catcher.emitter.emit('codeCaught', 'abc')
         }, 10)
-      })
-
-      afterEach(async () => { // eslint-disable-line
-        await authReceiver.catcher.close()
-        mockReceiver.restore()
       })
 
       it('assert equal to object', async () => {

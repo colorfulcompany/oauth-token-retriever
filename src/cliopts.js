@@ -1,3 +1,4 @@
+import process from 'node:process'
 import yargs from 'yargs/yargs'
 
 export default class Cliopts {
@@ -18,10 +19,10 @@ export default class Cliopts {
   /**
    * @param {Error} err
    * @param {object} parsed
-   * @param {object} output
+   * @param {object} _output
    * @return {object}
    */
-  parsedReceiver (err, parsed, output) {
+  parsedReceiver (err, parsed, _output) {
     if (err) { this.error = err; return err }
     if (parsed) { this.argv = parsed; return parsed }
   }

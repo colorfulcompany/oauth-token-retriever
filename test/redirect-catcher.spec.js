@@ -7,7 +7,7 @@ import assert from 'power-assert'
 
 describe('RedirectCatcher', () => {
   describe('#authorizationCode', () => {
-    var catcher
+    let catcher
 
     /**
      * @return {string}
@@ -32,7 +32,7 @@ describe('RedirectCatcher', () => {
     })
 
     it('codeCaught event emitted', async () => {
-      catcher.on('codeCaude', (code) => {
+      catcher.on('codeCaude', (_code) => {
         assert(true)
       })
       await ky(url())

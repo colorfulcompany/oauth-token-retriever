@@ -1,5 +1,5 @@
-import EventEmitter from 'events'
-import express from 'express'
+import EventEmitter from 'node:events'
+import express from 'npm:express'
 
 export default class RedirectCatcher {
   /**
@@ -49,7 +49,7 @@ export default class RedirectCatcher {
   async run () {
     const port = this.port()
 
-    this.app.get('/', async (req, res, next) => {
+    this.app.get('/', async (req, res, _next) => {
       this.code = req.query.code.repeat(1)
       res.status(200).send('')
       await this.close()
@@ -59,7 +59,7 @@ export default class RedirectCatcher {
     console.log(`start server on http://localhost:${port}`)
     this.server = this.app.listen(port)
 
-    return this.server
+    return await this.server
   }
 
   /**
