@@ -18,7 +18,7 @@
     "intelli-espower-loader": "^1.1.0",
     "ky": "^1.7.4",
     "lodash": "^4.17.21",
-    "mocha": "^11.0.1",
+    "mocha": "^11.1.0",
     "power-assert": "^1.6.1",
     "sinon": "^19.0.2"
   },
