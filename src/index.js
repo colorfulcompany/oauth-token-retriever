@@ -1,3 +1,4 @@
+import process from 'node:process'
 import Cliopts from './cliopts.js'
 import Config from './config.js'
 import AuthorizationReceiver from './authorization-receiver.js'

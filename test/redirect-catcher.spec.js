@@ -1,4 +1,4 @@
-import { describe, it, beforeEach, afterEach } from 'mocha'
+import { describe, it, beforeEach } from 'mocha'
 
 import RedirectCatcher from '../src/redirect-catcher.js'
 
@@ -7,7 +7,7 @@ import assert from 'power-assert'
 
 describe('RedirectCatcher', () => {
   describe('#authorizationCode', () => {
-    var catcher
+    let catcher
 
     /**
      * @return {string}
@@ -21,10 +21,6 @@ describe('RedirectCatcher', () => {
       await catcher.run()
     })
 
-    afterEach(() => { // eslint-disable-line
-      catcher.close()
-    })
-
     it('#authorizationCode', async () => {
       await ky(url())
 
@@ -32,7 +28,7 @@ describe('RedirectCatcher', () => {
     })
 
     it('codeCaught event emitted', async () => {
-      catcher.on('codeCaude', (code) => {
+      catcher.on('codeCaude', (_code) => {
         assert(true)
       })
       await ky(url())

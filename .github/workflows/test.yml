@@ -14,14 +14,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: denoland/setup-deno@v2
         with:
-          node-version: '18.x'
-      - name: install yarn
-        run: npm install -g yarn
-      - name: install npms /w yarn
-        run: yarn install
+          deno-version: v2.x
+      - name: install dependencies
+        run: deno install
       - name: lint
-        run: yarn run lint
+        run: deno lint
       - name: test
-        run: yarn run test
+        run: deno task test

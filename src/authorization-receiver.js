@@ -1,4 +1,4 @@
-import { URL } from 'url'
+import { URL } from 'node:url'
 import { OAuth2 } from 'oauth'
 import open from 'open'
 
@@ -45,8 +45,11 @@ export default class AuthorizationReceiver {
   }
 
   async invokeCatcher () {
-    this.catcher = new RedirectCatcher(this.config.catcher.port)
-    await this.catcher.run()
+    const catcher = new RedirectCatcher(this.config.catcher.port)
+    await catcher.run()
+    this.catcher = catcher
+
+    return this.catcher
   }
 
   /**
@@ -90,9 +93,9 @@ export default class AuthorizationReceiver {
   }
 
   /**
-   * @return {string}
+   * @return {Promise<string>}
    */
-  async code () {
+  code () {
     return new Promise((resolve) => {
       this.catcher.on('codeCaught', (code) => {
         resolve(code)
@@ -102,16 +105,16 @@ export default class AuthorizationReceiver {
 
   /**
    * @param {string} code
-   * @return {object}
+   * @return {Promise<object>}
    */
-  async token (code) {
+  token (code) {
     return new Promise((resolve) => {
       this.client.getOAuthAccessToken(
         code,
         this.authorizeParams({
           grant_type: this.config.provider.grantType
         }),
-        (none, access_token, refresh_token, result) => { // eslint-disable-line
+        (_none, _access_token, refresh_token, result) => { // eslint-disable-line
           resolve(this.mergeRefreshTokenAndResult(refresh_token, result)) // eslint-disable-line
         }
       )

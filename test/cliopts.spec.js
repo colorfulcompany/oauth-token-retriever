@@ -5,7 +5,7 @@ import _ from 'lodash'
 import Cliopts from '../src/cliopts.js'
 
 describe('Cliopts', () => {
-  var opts
+  let opts
 
   /**
    * @param  {Array} argv
@@ -57,7 +57,7 @@ describe('Cliopts', () => {
     })
 
     describe('required is filled', () => {
-      var given = ['-i', 'abc', '-s', 'def']
+      const given = ['-i', 'abc', '-s', 'def']
 
       beforeEach(() => { // eslint-disable-line
         opts.parse(given)
@@ -76,7 +76,7 @@ describe('Cliopts', () => {
     })
 
     describe('type mismatch', () => {
-      var parsed
+      let parsed
 
       describe('valid port type number', () => {
         beforeEach(() => { // eslint-disable-line

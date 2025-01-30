@@ -4,7 +4,7 @@ import Config from '../src/config.js'
 import assert from 'power-assert'
 
 describe('Config', () => {
-  var config
+  let config
 
   beforeEach(() => { // eslint-disable-line
     config = new Config()
@@ -35,7 +35,7 @@ describe('Config', () => {
     it('not object', () => {
       try {
         config.set(null)
-      } catch (e) {
+      } catch (_e) {
         // cannot work
         assert(true)
       }
