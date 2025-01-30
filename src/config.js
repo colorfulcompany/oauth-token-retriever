@@ -1,4 +1,4 @@
-class Config {
+export default class Config {
   /**
    * @param {object} opts
    */
@@ -67,5 +67,3 @@ class Config {
     }
   }
 }
-
-module.exports = Config

@@ -1,11 +1,10 @@
-const URL = require('url').URL
+import { URL } from 'url'
+import { OAuth2 } from 'oauth'
+import open from 'open'
 
-const OAuth2 = require('oauth').OAuth2
-const open = require('open')
+import RedirectCatcher from './redirect-catcher.js'
 
-const RedirectCatcher = require('./redirect-catcher')
-
-class AuthorizationReceiver {
+export default class AuthorizationReceiver {
   /**
    * @param {object} config
    */
@@ -131,5 +130,3 @@ class AuthorizationReceiver {
     }
   }
 }
-
-module.exports = AuthorizationReceiver
